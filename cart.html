@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <style>
+        nav{
+            width: 100%;
+            height: 50px;
+            background-color: black;
+        }
+        nav>ul{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        nav>ul>li>a{
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+        }
+        #main{
+            width: 100%;
+            height: auto;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            padding: 50px;
+            gap: 10px;
+            
+        }
+        #main>div{
+            width: 15%;
+            height: 400px;
+            border: 2px solid black;
+            text-align: center;
+        }
+        #main>div>img{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="login.html" id="change">Login</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div id="main">
+
+        </div>
+    </main>
+</body>
+</html>
+<script>
+       let lsdata=JSON.parse(localStorage.getItem("cart"));
+
+let one=document.getElementById("change");
+one.innerText=lsdata.name;
+console.log(one);
+
+    let data=JSON.parse(localStorage.getItem("cart1"));
+    let maindiv=document.getElementById("main");
+    
+    data.forEach(function(el,ind){
+    let div=document.createElement("div");
+    let img=document.createElement("img");
+    img.src="https://images.pexels.com/photos/18254876/pexels-photo-18254876/free-photo-of-waves-by-the-rocky-beach.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load";
+    let h3=document.createElement("h3");
+    h3.innerText=el.title;
+    let p=document.createElement("p");
+    p.innerText=el.price;
+
+    div.append(img,h3,p);
+    maindiv.append(div);
+})
+</script>
